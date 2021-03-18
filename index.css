@@ -1,0 +1,19 @@
+body {
+  background: white;
+}
+
+::selection {   
+  background-color: pink;  
+}
+
+.title{
+  text-align: center;
+}
+
+.title h1{
+  font-size: 5vw;
+}
+
+.title h2{
+  font-size: 2.5vw;
+}
