@@ -2,34 +2,34 @@ body {
   background: white;
 }
 
-::selection {   
-  background-color: pink;  
+::selection {
+  background-color: pink;
 }
 
-.title{
+.title {
   text-align: center;
 }
 
-.title h1{
+.title h1 {
   font-size: 5em;
   margin-top: 50px;
 }
 
-.title h2{
+.title h2 {
   font-size: 2.6em;
   margin-top: 50px;
 }
 
 .card {
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   cursor: pointer;
 }
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Add some padding inside the card container */
@@ -38,8 +38,8 @@ body {
   text-align: center;
 }
 
-.cardContainer a{
-  margin:20px;
+.cardContainer a {
+  margin: 20px;
 }
 
 .footer {
@@ -70,12 +70,19 @@ body {
 
 /* Facebook */
 .fa-facebook {
-  background: #3B5998;
+  background: #3b5998;
   color: white;
+  border-radius: 50%;
 }
 
-/* Twitter */
-.fa-twitter {
-  background: #55ACEE;
+.fa-instagram {
+  background: #125688;
   color: white;
+  border-radius: 50%;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+  border-radius: 50%;
 }
