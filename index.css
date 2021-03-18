@@ -11,23 +11,13 @@ body {
 }
 
 .title h1{
-  font-size: 5vw;
+  font-size: 5em;
+  margin-top: 50px;
 }
 
 .title h2{
-  font-size: 2.5vw;
-}
-
-.items{
-  text-align: center;
-}
-
-.items h1{
-  font-size: 1.2em;
-}
-
-.items a{
-  margin:20px;
+  font-size: 2.6em;
+  margin-top: 50px;
 }
 
 .card {
@@ -45,6 +35,11 @@ body {
 /* Add some padding inside the card container */
 .cardContainer {
   padding: 2px 16px;
+  text-align: center;
+}
+
+.cardContainer a{
+  margin:20px;
 }
 
 .footer {
