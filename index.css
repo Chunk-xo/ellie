@@ -42,7 +42,8 @@ body {
   margin: 20px;
 }
 
-.footer {
+
+.footer{
   left: 0;
   bottom: 0;
   width: 100%;
@@ -55,5 +56,6 @@ body {
 
 .socialbuttons{
   cursor: pointer;
+  padding-left: 20px;
 }
 
