@@ -1,8 +1,3 @@
-//Deploy to firebase hosting:
-//firebase login
-//firebase init
-//firebase deploy
-
 const firebaseConfig = {
   apiKey: "AIzaSyDFiEslRAD0j1Vsdl1kFVRzWa-UsOCVA_U",
   authDomain: "zayo-ellie.firebaseapp.com",
@@ -15,22 +10,4 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-var database = firebase.database();
-
-function writeUserData(userId, name, email) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-  });
-}
-
-console.log("hello");
-
-var id = "1"
-var fullname = "connor"
-var emailbox = "email@gmail.com"
-
-writeUserData(1, fullname, emailbox);
-
 
