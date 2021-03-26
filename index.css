@@ -83,26 +83,49 @@ body {
   border-radius:10px;
 }
 
-#signUpButton {
+.popdivButton{
+  background-color: white;
+  color: black;
+  border: 2px solid #fface3;
   display:inline-block;
   margin: 20px;
-  background-color: #fface3;
+  width: 30%;
+  height: 40px;
+  font-family: Arial, Helvetica, sans-serif;
   border-radius: 20px;
 }
 
-#signInButton {
+.popdivButton:hover {background-color: #e7e7e7;}
+.popdivButton:active {background-color: #ffffff;}
+
+.signUpButton {
   display:inline-block;
   margin: 20px;
+  width: 30%;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #fface3;
   border-radius: 20px;
+  text-transform: lowercase;
 }
 
-#signInButtonActive {
+.signInButton {
   display:inline-block;
   margin: 20px;
-  background-color: #fffdfe;
+  width: 30%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fface3;
   border-radius: 20px;
-  border-style: solid;
+  text-transform: lowercase;
+}
+
+.signInButtonActive {
+  display:inline-block;
+  margin: 20px;
+  width: 30%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fface3;
+  border-radius: 20px;
+  text-transform: lowercase;
 }
 
 #closeButton{
