@@ -49,18 +49,10 @@ firebase.auth().onAuthStateChanged((user) => {
       var trimright = trimleft.slice(0, trimleft.length - 76);
 
       console.log(trimright);
-
-      for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return
+      
+      firebase.database().ref('tempUser/' + trimright).set({
+        basket: 1,
+      });
 
     }
 
