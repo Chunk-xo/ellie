@@ -32,6 +32,41 @@ firebase.auth().onAuthStateChanged((user) => {
     // User is signed out
     $('#signoutNav').hide();
     $('#accountNav').show();
+    
+    function setCookie(cname,cvalue,exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      var cookieID = JSON.stringify(ca);
+      var trimleft = cookieID.slice(15);
+      var trimright = trimleft.slice(0, trimleft.length - 76);
+
+      console.log(trimright);
+
+      for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return
+
+    }
+
+    setCookie();
+    getCookie();
+
   }
 });
 
@@ -150,3 +185,15 @@ $(window).click(function() {
 $('.fullscreen-container').click(function(event){
     event.stopPropagation();
 });
+
+
+function addToBasket(itemID){
+  var user = firebase.auth().currentUser;
+  var email = user.email
+  firebase.database().ref('users/' + email).set({
+    email: user.email,
+    itemID: itemID,
+  });
+}
+
+

@@ -25,7 +25,11 @@
       <ul id="nav-mobile" class="right">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Basket</a></li>
+        <li style="text-align:center;"><a href="#">Basket</a>
+          <div class="circle">
+            <p>1</p>
+          </div>
+        </li>
         <li id="signoutNav"><a href="#" onclick="signout();">Sign Out</a></li>
         <li id="accountNav"><a href="#" onclick="showLoginBox();">Login/Register</a></li>
       </ul>
@@ -104,7 +108,7 @@
           <div class="cardContainer">
             <h1><b>Red Mug</b></h1>
             <p>A red drinking mug, perfect for tea</p>
-            <a class="waves-effect waves-light btn" style="margin:20px; color:grey; background-color:rgba(38, 166, 154, 0.2)">Add to Basket</a>
+            <a class="waves-effect waves-light btn" style="margin:20px; color:grey; background-color:rgba(38, 166, 154, 0.2)" onclick="addToBasket(1)">Add to Basket</a>
           </div>
         </div>
       </div>

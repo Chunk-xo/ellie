@@ -20,6 +20,24 @@ body {
   margin-top: 50px;
 }
 
+.circle{
+  width: 30px;
+  height: 30px;
+  background: rgb(105, 105, 105);
+  border: 0.2px solid rgb(43, 42, 42);
+  border-radius: 50%;
+  text-align: center;
+  margin:auto;
+  display:inline-block;
+  z-index: 1000;
+  position: absolute;
+  top: 50px;
+}
+
+.circle p{
+  line-height: 30px;
+}
+
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
