@@ -58,42 +58,63 @@ body {
   padding-left: 20px;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
+
+.fullscreen-container {
+  display: none;
+  position: fixed;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(43, 42, 42, 0.5);
+  z-index: 9999;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+#popdiv {
+  position: fixed;
+  width: 50%;
+  height: 50%;
+  overflow-y:auto;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  top: 25%;
+  left: 25%;
+  text-align: center;
+  border-radius:10px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+#signUpButton {
+  display:inline-block;
+  margin: 20px;
+  background-color: #fface3;
+  border-radius: 20px;
+}
+
+#signInButton {
+  display:inline-block;
+  margin: 20px;
+  background-color: #fface3;
+  border-radius: 20px;
+}
+
+#signInButtonActive {
+  display:inline-block;
+  margin: 20px;
+  background-color: #fffdfe;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+#closeButton{
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
   font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
   text-decoration: none;
-  cursor: pointer;
+  color: #333;
+  float: right;
+  margin: 15px;
 }
 
 .footer {

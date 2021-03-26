@@ -187,14 +187,54 @@
   </div>
   </div>
 
-  <!--Popup Login/Registration-->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+  <button id="registerButton">Open dialog</button>
+  <div class="fullscreen-container">
+    <div id="popdiv">
+      <a id="closeButton" href="#">&times;</a>
+      <a id="signUpButton" class="waves-effect waves-teal btn-flat">Sign Up</a>
+      <a id="signInButton" class="waves-effect waves-teal btn-flat">Sign In</a>
+
+      <div class="row">
+        <form class="col s12">
+          
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <button onclick="createNewAccount()">Create</button>
+            </div>
+          </div>
+
+       </form>
+     </div>
+
+
+
     </div>
   </div>
-
 
   <div class="footer">
     <br>
@@ -207,6 +247,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="index.js"></script>
 
 </html>
