@@ -32,36 +32,62 @@ firebase.auth().onAuthStateChanged((user) => {
     // User is signed out
     $('#signoutNav').hide();
     $('#accountNav').show();
-    
-    function setCookie(cname,cvalue,exdays) {
-      var d = new Date();
-      d.setTime(d.getTime() + (exdays*24*60*60*1000));
-      var expires = "expires=" + d.toGMTString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    function getCookie(cname) {
-      var name = cname + "=";
-      var decodedCookie = decodeURIComponent(document.cookie);
-      var ca = decodedCookie.split(';');
-      var cookieID = JSON.stringify(ca);
-      var trimleft = cookieID.slice(15);
-      var trimright = trimleft.slice(0, trimleft.length - 76);
-
-      console.log(trimright);
-      
-      firebase.database().ref('tempUser/' + trimright).set({
-        basket: 1,
-      });
-
-    }
-
-    setCookie();
-    getCookie();
 
   }
 });
 
+function addToBasket(){
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      //add to basket for signed in user
+    
+    } else {
+      // User is signed out
+     
+      function setCookie(cname,cvalue,exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        var cookieID = JSON.stringify(ca);
+        var trimleft = cookieID.slice(15);
+        var trimright = trimleft.slice(0, trimleft.length - 76);
+
+        console.log(trimright);
+        
+        function updateBasket(){
+          //get current
+          database.child("tempUser/", trimright, "/").child("basket").get().then(function(snapshot) {
+            if (snapshot.exists()) {
+              console.log(snapshot.val());
+            }
+            else {
+              console.log("No data available");
+            }
+          }).catch(function(error) {
+            console.error(error);
+          });
+
+          //update
+          firebase.database().ref('tempUser/' + trimright).update({
+            basket: 1,
+          });
+        }
+      updateBasket();
+      }
+      setCookie();
+      getCookie();
+    }
+  });  
+}
+
+addToBasket();
 
 function createUser(){
   firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -179,13 +205,13 @@ $('.fullscreen-container').click(function(event){
 });
 
 
-function addToBasket(itemID){
-  var user = firebase.auth().currentUser;
-  var email = user.email
-  firebase.database().ref('users/' + email).set({
-    email: user.email,
-    itemID: itemID,
-  });
-}
+//function addToBasket(itemID){
+  //var user = firebase.auth().currentUser;
+  //var email = user.email
+  //firebase.database().ref('users/' + email).set({
+    //email: user.email,
+    //itemID: itemID,
+  //});
+//}
 
 
