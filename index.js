@@ -66,10 +66,13 @@ function addToBasket(){
           database.on('value', (snapshot) => {
             if (snapshot.exists()) {
               const data = snapshot.val();
-              var currentBasket = Object.values(data);//returning an array of values of property
+              //get basket number from json
+              var currentBasket = Object.values(data);
+              //turn to number from string
               let number = parseFloat(currentBasket) ;
+              //add one to basket
               var newNumber = number + 1;
-
+              //upload new number to db
               firebase.database().ref('tempUser/' + trimright).update({
                 basket: newNumber,
               });
