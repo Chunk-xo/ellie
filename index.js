@@ -57,26 +57,33 @@ function addToBasket(){
         var ca = decodedCookie.split(';');
         var cookieID = JSON.stringify(ca);
         var trimleft = cookieID.slice(15);
+        //trimright is temp id
         var trimright = trimleft.slice(0, trimleft.length - 76);
-
-        console.log(trimright);
         
         function updateBasket(){
           //get current
-          database.child("tempUser/", trimright, "/").child("basket").get().then(function(snapshot) {
+          var database = firebase.database().ref('tempUser/' + trimright);
+          database.on('value', (snapshot) => {
             if (snapshot.exists()) {
-              console.log(snapshot.val());
-            }
-            else {
-              console.log("No data available");
-            }
-          }).catch(function(error) {
-            console.error(error);
-          });
+              const data = snapshot.val();
+              var currentBasket = Object.values(data);//returning an array of values of property
+              let number = parseFloat(currentBasket) ;
+              var newNumber = number + 1;
 
-          //update
-          firebase.database().ref('tempUser/' + trimright).update({
-            basket: 1,
+              firebase.database().ref('tempUser/' + trimright).update({
+                basket: newNumber,
+              });
+
+            }
+
+            else {
+              console.log("add one to basket");
+              //update
+              firebase.database().ref('tempUser/' + trimright).update({
+                basket: 1,
+              });
+            }
+
           });
         }
       updateBasket();
@@ -87,7 +94,6 @@ function addToBasket(){
   });  
 }
 
-addToBasket();
 
 function createUser(){
   firebase.auth().createUserWithEmailAndPassword(email, password)
