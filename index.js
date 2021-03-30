@@ -36,65 +36,62 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-function addToBasket(){
+function isUserSignedIn(){
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      //add to basket for signed in user
+      //User is signed in
     
     } else {
-      // User is signed out
-     
-      function setCookie(cname,cvalue,exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-      }
-
-      function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        var cookieID = JSON.stringify(ca);
-        var trimleft = cookieID.slice(15);
-        //trimright is temp id
-        var trimright = trimleft.slice(0, trimleft.length - 76);
-        
-        function updateBasket(){
-          //get current
-          var database = firebase.database().ref('tempUser/' + trimright);
-          database.on('value', (snapshot) => {
-            if (snapshot.exists()) {
-              const data = snapshot.val();
-              //get basket number from json
-              var currentBasket = Object.values(data);
-              //turn to number from string
-              let number = parseFloat(currentBasket) ;
-              //add one to basket
-              var newNumber = number + 1;
-              //upload new number to db
-              firebase.database().ref('tempUser/' + trimright).update({
-                basket: newNumber,
-              });
-
-            }
-
-            else {
-              console.log("add one to basket");
-              //update
-              firebase.database().ref('tempUser/' + trimright).update({
-                basket: 1,
-              });
-            }
-
-          });
-        }
-      updateBasket();
-      }
+      // User is signed out, generate cookie
       setCookie();
-      getCookie();
     }
-  });  
+  });
+};
+
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  getCookie(cname);
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  var cookieID = JSON.stringify(ca);
+  var trimleft = cookieID.slice(15);
+  var sessionID = trimleft.slice(0, trimleft.length - 76);
+  addToBasket(sessionID);
+}
+
+function addToBasket(sessionID){
+  //get current
+  var database = firebase.database().ref('tempUser/' + sessionID);
+  database.on('value', (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      //get basket number from json
+      var currentBasket = Object.values(data);
+      //turn to number from string
+      let number = parseFloat(currentBasket) ;
+      //add one to basket
+      var newNumber = number + 1;
+      //upload new number to db
+      database.update({
+        basket: newNumber,
+      });
+     }
+
+      else {
+        console.log("add one to basket");
+        //update
+        firebase.database().ref('tempUser/' + sessionID).set({
+          basket: 1,
+        });
+      }
+    });
 }
 
 
