@@ -80,14 +80,17 @@ function addToBasket(sessionID){
     else {
       //get basket number from json
       var currentBasket = Object.values(data);
+      console.log(currentBasket);
       //turn to number from string
-      let number = parseFloat(currentBasket) ;
+      var number = currentBasket[0];
+      //let number = parseFloat(data);
       //add one to basket
       var newNumber = number + 1;
       //upload new number to db
-      firebase.database().ref('tempUser/' + sessionID).set({
-        basket: newNumber,
-      });
+      console.log(newNumber);
+      //firebase.database().ref('tempUser/' + sessionID).set({
+        //basket: newNumber,
+      //});
     }
 
   });
