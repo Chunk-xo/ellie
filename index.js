@@ -67,11 +67,17 @@ function getCookie(cname) {
 }
 
 function addToBasket(sessionID){
-  //get current
-  var database = firebase.database().ref('tempUser/' + sessionID);
-  database.on('value', (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
+  firebase.database().ref('tempUser/' + sessionID).on('value', function (snapshot) {
+    var data = snapshot.val();
+    
+    if (data == null) {
+      //update
+      firebase.database().ref('tempUser/' + sessionID).set({
+        basket: 1,
+      });
+    }
+    
+    else {
       //get basket number from json
       var currentBasket = Object.values(data);
       //turn to number from string
@@ -79,19 +85,12 @@ function addToBasket(sessionID){
       //add one to basket
       var newNumber = number + 1;
       //upload new number to db
-      database.update({
+      firebase.database().ref('tempUser/' + sessionID).set({
         basket: newNumber,
       });
-     }
+    }
 
-      else {
-        console.log("add one to basket");
-        //update
-        firebase.database().ref('tempUser/' + sessionID).set({
-          basket: 1,
-        });
-      }
-    });
+  });
 }
 
 
