@@ -40,9 +40,10 @@ function isUserSignedIn(){
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //User is signed in
-    
+      var userIdenity = user.uid;
+      addToBasket(userIdenity);
     } else {
-      // User is signed out, generate cookie
+      // User is signed out, generate cookie and trigger basked
       setCookie();
     }
   });
@@ -63,10 +64,11 @@ function getCookie(cname) {
   var cookieID = JSON.stringify(ca);
   var trimleft = cookieID.slice(15);
   var sessionID = trimleft.slice(0, trimleft.length - 76);
-  addToBasket(sessionID);
+  addToTempBasket(sessionID);
 }
 
-function addToBasket(sessionID){
+function addToTempBasket(sessionID){
+
   firebase.database().ref('tempUser/' + sessionID).once('value', function (snapshot) {
     var data = snapshot.val();
     
@@ -95,6 +97,34 @@ function addToBasket(sessionID){
   });
 }
 
+function addToBasket(userIdenity){
+  firebase.database().ref('user/' + userIdenity).once('value', function (snapshot) {
+    var data = snapshot.val();
+    
+    if (data == null) {
+      //update
+      firebase.database().ref('user/' + userIdenity).set({
+        basket: 1,
+      });
+    }
+    
+    else {
+      //get basket number from json
+      var currentBasket = Object.values(data);
+      console.log(currentBasket);
+      //turn to number from string
+      var number = currentBasket[0];
+      //let number = parseFloat(data);
+      //add one to basket
+      var newNumber = number + 1;
+      //upload new number to db
+      firebase.database().ref('user/' + userIdenity).set({
+        basket: newNumber,
+      });
+    }
+
+  });
+}
 
 function createUser(){
   firebase.auth().createUserWithEmailAndPassword(email, password)
