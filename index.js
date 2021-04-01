@@ -211,44 +211,28 @@ function signout(){
 
 
 function showLoginBox(){
-  $(".fullscreen-container").fadeTo(200, 1);
-  //doesn't work
-  $('body').css("overflow", "hidden");
-  $("#closeButton").click(function() {
+  $("#accountOverlay").fadeTo(200, 1);
+  $("#accountPopUp").fadeTo(200, 1);
+  $("#closeAccountBox").click(function() {
     $(".fullscreen-container").fadeOut(200);
   });
+
+  //$(".fullscreen-container").click(function() {
+    //$(".fullscreen-container").fadeOut(200);
+  //});
 }
 
-//to do: 
-//hide body scroll
-//body click closes modal
-$(function() {
-  $("#registerButton").click(function() {
-    $(".fullscreen-container").fadeTo(200, 1);
-    //doesn't work
-    $('body').css("overflow", "hidden");
-  });
-  $("#closeButton").click(function() {
+function showBasketBox(){
+  $("#basketOverlay").fadeTo(200, 1);
+  $("#basketPopUp").fadeTo(200, 1);
+  $("#closeBasketBox").click(function() {
     $(".fullscreen-container").fadeOut(200);
   });
-});
 
-//doesn't work
-$(window).click(function() {
-//Hide the menus if visible
-});
-$('.fullscreen-container').click(function(event){
-    event.stopPropagation();
-});
-
-
-//function addToBasket(itemID){
-  //var user = firebase.auth().currentUser;
-  //var email = user.email
-  //firebase.database().ref('users/' + email).set({
-    //email: user.email,
-    //itemID: itemID,
+  //$(".fullscreen-container").click(function() {
+    //$(".fullscreen-container").fadeOut(200);
   //});
-//}
+
+}
 
 

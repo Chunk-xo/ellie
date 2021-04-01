@@ -25,7 +25,7 @@
       <ul id="nav-mobile" class="right">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li style="text-align:center;"><a href="#">Basket</a>
+        <li style="text-align:center;"><a href="#" onclick="showBasketBox();">Basket</a>
           <div class="circle">
             <p>1</p>
           </div>
@@ -191,56 +191,71 @@
  
   </div>
   </div>
+  
+  <!--Sign in/Register Overlay-->
+  <div id="accountOverlay" class="fullscreen-container">
+    <section id="accountbox">
+      <div id="accountPopUp" class="popUp">
+        <a class="closeBox" id="closeAccountBox" href="#">&times;</a>
+        <a id="signUpButton" class="popdivButton">Sign Up</a>
+        <a id="signInButton" class="popdivButton">Sign In</a>
 
-  <button id="registerButton">Open dialog</button>
-  <div class="fullscreen-container">
-    <div id="popdiv">
-      <a id="closeButton" href="#">&times;</a>
-      <a id="signUpButton" class="popdivButton">Sign Up</a>
-      <a id="signInButton" class="popdivButton">Sign In</a>
-
-      <div class="row">
-        <form class="col s12">
-          
-          <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
+        <div class="row">
+          <form class="col s12">
+            
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+              </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <button onclick="createNewAccount()">Create</button>
+                <button onclick="loginAccount()">Login</button>
+              </div>
             </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <button onclick="createNewAccount()">Create</button>
-              <button onclick="loginAccount()">Login</button>
-            </div>
-          </div>
-
-       </form>
-     </div>
-
-
-
-    </div>
+        </form>
+      </div>
+      </div>
+    </section>
   </div>
+
+ <!--Basket Overlay-->
+  <div id="basketOverlay" class="fullscreen-container">
+    <section id="basketbox">
+      <div id="basketPopUp" class="popUp">
+        <a class="closeBox" id="closeBasketBox" href="#">&times;</a>
+        <a id="signUpButton" class="popdivButton">Sign Up</a>
+        <a id="signInButton" class="popdivButton">Sign In</a>
+
+        <div class="row">
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+
 
   <div class="footer">
     <br>
