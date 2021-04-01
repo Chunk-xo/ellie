@@ -49,48 +49,45 @@ firebase.auth().signInAnonymously()
     // ...
   });
 
-
-function isUserSignedIn(){
-  firebase.auth().onAuthStateChanged((user) => {
+function addToBasket(item){
+    firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //User is signed in
       var userIdenity = user.uid;
-      addToBasket(userIdenity);
+      firebase.database().ref('user/' + userIdenity).once('value', function (snapshot) {
+      var data = snapshot.val();
+      
+      if (data == null) {
+        //update
+        firebase.database().ref('user/' + userIdenity).set({
+          basket: 1,
+        });
+      }
+      
+      else {
+        //get basket number from json
+        var currentBasket = Object.values(data);
+        console.log(currentBasket);
+        //turn to number from string
+        var number = currentBasket[0];
+        //let number = parseFloat(data);
+        //add one to basket
+        var newNumber = number + 1;
+        //upload new number to db
+        firebase.database().ref('user/' + userIdenity).update({
+          basket: newNumber,
+        });
+      }
+
+      getBasketCircle(userIdenity);
+
+      console.log(item.id);
+
+    });
+
     } else {
       //Do nothing
     }
-  });
-};
-
-
-function addToBasket(userIdenity){
-  firebase.database().ref('user/' + userIdenity).once('value', function (snapshot) {
-    var data = snapshot.val();
-    
-    if (data == null) {
-      //update
-      firebase.database().ref('user/' + userIdenity).set({
-        basket: 1,
-      });
-    }
-    
-    else {
-      //get basket number from json
-      var currentBasket = Object.values(data);
-      console.log(currentBasket);
-      //turn to number from string
-      var number = currentBasket[0];
-      //let number = parseFloat(data);
-      //add one to basket
-      var newNumber = number + 1;
-      //upload new number to db
-      firebase.database().ref('user/' + userIdenity).set({
-        basket: newNumber,
-      });
-    }
-
-    getBasketCircle(userIdenity);
-
   });
 }
 
