@@ -23,8 +23,6 @@ firebase.auth().onAuthStateChanged((user) => {
   var userIdenity = user.uid;
   if (useremail != null) {
     // User is signed in, see docs for a list of available properties
-    console.log("logged in user:", useremail);
-    console.log("logged in user:", userIdenity);
     $("#hello").append("<p>Hello", useremail, "</p>");
     $('#signoutNav').show();
     $('#accountNav').hide();
@@ -40,8 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
 firebase.auth().signInAnonymously()
   .then(() => {
-    // Signed in..
-    console.log("hello")    
+    // Signed in..   
   })
   .catch((error) => {
     var errorCode = error.code;
@@ -67,7 +64,6 @@ function addToBasket(item){
       else {
         //get basket number from json
         var currentBasket = Object.values(data);
-        console.log(currentBasket);
         //turn to number from string
         var number = currentBasket[0];
         //let number = parseFloat(data);
@@ -80,8 +76,19 @@ function addToBasket(item){
       }
 
       getBasketCircle(userIdenity);
+      var itemCheck = currentBasket[1]
+      
+      if (itemCheck == item.id){
+        //Item Already in Basket Do Nothing
+      }
 
-      console.log(item.id);
+      else {
+        //Add Item To Basket
+        firebase.database().ref('user/' + userIdenity).update({
+          itemCheck: item.id,
+        });
+
+      }
 
     });
 
