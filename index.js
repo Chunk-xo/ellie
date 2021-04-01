@@ -67,7 +67,7 @@ function getCookie(cname) {
 }
 
 function addToBasket(sessionID){
-  firebase.database().ref('tempUser/' + sessionID).on('value', function (snapshot) {
+  firebase.database().ref('tempUser/' + sessionID).once('value', function (snapshot) {
     var data = snapshot.val();
     
     if (data == null) {
@@ -87,10 +87,9 @@ function addToBasket(sessionID){
       //add one to basket
       var newNumber = number + 1;
       //upload new number to db
-      console.log(newNumber);
-      //firebase.database().ref('tempUser/' + sessionID).set({
-        //basket: newNumber,
-      //});
+      firebase.database().ref('tempUser/' + sessionID).set({
+        basket: newNumber,
+      });
     }
 
   });
