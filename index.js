@@ -47,6 +47,7 @@ firebase.auth().signInAnonymously()
   });
 
 function addToBasket(item){
+    confetti.start(2000, 350);
     firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //User is signed in
@@ -58,6 +59,10 @@ function addToBasket(item){
         //update
         firebase.database().ref('user/' + userIdenity).set({
           basket: 1,
+        });
+        //Add Item ID To Basket
+        firebase.database().ref('user/' + userIdenity + '/' + item.id).update({
+          inbasket: true,
         });
       }
       
@@ -83,9 +88,9 @@ function addToBasket(item){
       }
 
       else {
-        //Add Item To Basket
-        firebase.database().ref('user/' + userIdenity).update({
-          itemCheck: item.id,
+        //Add Item ID To Basket
+        firebase.database().ref('user/' + userIdenity + '/' + item.id).update({
+          inbasket: true,
         });
 
       }
@@ -94,6 +99,7 @@ function addToBasket(item){
 
     } else {
       //Do nothing
+      
     }
   });
 }
