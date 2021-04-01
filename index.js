@@ -19,22 +19,36 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
+  var useremail = user.email;
+  var userIdenity = user.uid;
+  if (useremail != null) {
     // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    var useremail = user.email;
-    console.log(useremail);
+    console.log("logged in user:", useremail);
+    console.log("logged in user:", userIdenity);
     $("#hello").append("<p>Hello", useremail, "</p>");
     $('#signoutNav').show();
     $('#accountNav').hide();
+    getBasketCircle(userIdenity);
   
   } else {
     // User is signed out
     $('#signoutNav').hide();
     $('#accountNav').show();
-
+    getBasketCircle(userIdenity);
   }
 });
+
+firebase.auth().signInAnonymously()
+  .then(() => {
+    // Signed in..
+    console.log("hello")    
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+
 
 function isUserSignedIn(){
   firebase.auth().onAuthStateChanged((user) => {
@@ -43,69 +57,11 @@ function isUserSignedIn(){
       var userIdenity = user.uid;
       addToBasket(userIdenity);
     } else {
-      // User is signed out, generate cookie and trigger basked
-      setCookie();
+      //Do nothing
     }
   });
 };
 
-function setCookie(cname,cvalue,exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  getCookie(cname);
-}
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  var cookieID = JSON.stringify(ca);
-  var trimleft = cookieID.slice(15);
-  var sessionID = trimleft.slice(0, trimleft.length - 76);
-  addToTempBasket(sessionID);
-}
-
-function addToTempBasket(sessionID){
-
-  firebase.database().ref('tempUser/' + sessionID).once('value', function (snapshot) {
-    var data = snapshot.val();
-    
-    if (data == null) {
-      //update
-      firebase.database().ref('tempUser/' + sessionID).set({
-        basket: 1,
-      });
-      
-      $('.basketCircle').css({"display":"inline-block"});
-      $(".basketCircle").fadeTo(200, 1);
-      $('#basketCounter').text('1');
-
-    }
-    
-    else {
-      //get basket number from json
-      var currentBasket = Object.values(data);
-      console.log(currentBasket);
-      //turn to number from string
-      var number = currentBasket[0];
-      //let number = parseFloat(data);
-      //add one to basket
-      var newNumber = number + 1;
-      //upload new number to db
-      firebase.database().ref('tempUser/' + sessionID).set({
-        basket: newNumber,
-      });
-
-      $('.basketCircle').css({"display":"inline-block"});
-      $(".basketCircle").fadeTo(200, 1);
-      $('#basketCounter').text(newNumber);
-
-    }
-
-  });
-}
 
 function addToBasket(userIdenity){
   firebase.database().ref('user/' + userIdenity).once('value', function (snapshot) {
@@ -131,6 +87,33 @@ function addToBasket(userIdenity){
       firebase.database().ref('user/' + userIdenity).set({
         basket: newNumber,
       });
+    }
+
+    getBasketCircle(userIdenity);
+
+  });
+}
+
+function getBasketCircle(userIdenity){
+
+  firebase.database().ref('user/' + userIdenity).once('value', function (snapshot) {
+    var data = snapshot.val();
+    
+    if (data == null) {
+      //do nothing
+
+    }
+    
+    else {
+      //get basket number from json
+      var currentBasket = Object.values(data);
+      //turn to number from string
+      var number = currentBasket[0];
+ 
+      $('.basketCircle').css({"display":"inline-block"});
+      $(".basketCircle").fadeTo(200, 1);
+      $('#basketCounter').text(number);
+
     }
 
   });
@@ -217,6 +200,9 @@ function signout(){
   }, function(error) {
     console.error('Sign Out Error', error);
   });
+
+  $('.basketCircle').css({"display":"none"});
+
 }
 
 
