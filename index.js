@@ -77,6 +77,11 @@ function addToTempBasket(sessionID){
       firebase.database().ref('tempUser/' + sessionID).set({
         basket: 1,
       });
+      
+      $('.basketCircle').css({"display":"inline-block"});
+      $(".basketCircle").fadeTo(200, 1);
+      $('#basketCounter').text('1');
+
     }
     
     else {
@@ -92,6 +97,11 @@ function addToTempBasket(sessionID){
       firebase.database().ref('tempUser/' + sessionID).set({
         basket: newNumber,
       });
+
+      $('.basketCircle').css({"display":"inline-block"});
+      $(".basketCircle").fadeTo(200, 1);
+      $('#basketCounter').text(newNumber);
+
     }
 
   });

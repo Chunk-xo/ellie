@@ -9,7 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
   <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
@@ -26,8 +25,8 @@
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li style="text-align:center;"><a href="#" onclick="showBasketBox();">Basket</a>
-          <div class="circle">
-            <p>1</p>
+          <div class="basketCircle">
+            <p id="basketCounter">1</p>
           </div>
         </li>
         <li id="signoutNav"><a href="#" onclick="signout();">Sign Out</a></li>
@@ -245,12 +244,36 @@
     <section id="basketbox">
       <div id="basketPopUp" class="popUp">
         <a class="closeBox" id="closeBasketBox" href="#">&times;</a>
-        <a id="signUpButton" class="popdivButton">Sign Up</a>
-        <a id="signInButton" class="popdivButton">Sign In</a>
 
         <div class="row">
+          <table class="w3-table w3-striped">
+            <tr>
+              <th>Qauntity</th>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Remove</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Red Mug</td>
+              <td>£100</td>
+              <td>&times;</td>
+            </tr>
+          </table>
+        </div>
 
+        <div class="totals">
+          <p>Items:</p>
+          <p>Postage (UK Only):</p>
+          <p>Total:</p>
+        </div>
 
+        <a id="proceedToPayment" class="popdivButton">Proceed to Payment</a>
+        <br>
+        <div class="paymentMethods">
+          <p>Bitcoin</p>
+          <p>PayPal</p>
+          <p>Debit/Credit</p>
         </div>
       </div>
     </section>
@@ -258,7 +281,12 @@
 
 
   <div class="footer">
+    
     <br>
+    <a href="#">About</a>
+    <br>
+    <a href="#">Terms and Conditions</a>
+
   </div>
 
 </body>

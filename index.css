@@ -20,7 +20,7 @@ body {
   margin-top: 50px;
 }
 
-.circle{
+.basketCircle{
   width: 30px;
   height: 30px;
   background: rgb(105, 105, 105);
@@ -28,13 +28,13 @@ body {
   border-radius: 50%;
   text-align: center;
   margin:auto;
-  display:inline-block;
+  display:none;
   z-index: 1000;
   position: absolute;
   top: 50px;
 }
 
-.circle p{
+.basketCircle p{
   line-height: 30px;
 }
 
@@ -159,6 +159,14 @@ body {
   margin: 15px;
 }
 
+.paymentMethods p{
+  display: inline-block;
+  margin: 20px;
+}
+
+.totals p{
+  margin: 20px;
+}
 
 .footer {
   left: 0;
@@ -169,4 +177,8 @@ body {
   color: white;
   text-align: center;
   margin-top: 20px;
+}
+
+.footer a{
+  margin: 20px;
 }
