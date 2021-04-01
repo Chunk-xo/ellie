@@ -241,4 +241,26 @@ function showBasketBox(){
 
 }
 
+function populateBasketBox(){
 
+  firebase.auth().onAuthStateChanged((user) => {
+    var userIdenity = user.uid;   
+    var database = firebase.database().ref('user/' + userIdenity);
+   
+    database.on('value', function(snapshot){
+      snapshot.forEach(function(item){        
+        var itemVal = item.val();
+        //var status = itemVal[0];
+        console.log(itemVal);
+        console.log(snapshot)
+
+        if (itemVal == true){
+          console.log("true")
+        }
+
+      })
+    });
+  })
+} 
+
+populateBasketBox();
