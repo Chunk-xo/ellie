@@ -62,6 +62,7 @@ function addToBasket(item){
         });
         //Add Item ID To Basket
         firebase.database().ref('user/' + userIdenity + '/' + item.id).update({
+          item: item.id,
           inbasket: true,
         });
       }
@@ -90,6 +91,7 @@ function addToBasket(item){
       else {
         //Add Item ID To Basket
         firebase.database().ref('user/' + userIdenity + '/' + item.id).update({
+          item: item.id,
           inbasket: true,
         });
 
@@ -250,12 +252,23 @@ function populateBasketBox(){
     database.on('value', function(snapshot){
       snapshot.forEach(function(item){        
         var itemVal = item.val();
-        //var status = itemVal[0];
-        console.log(itemVal);
-        console.log(snapshot)
+        var string = JSON.stringify(itemVal);
+        var item = string.slice(25, -2); 
+        
+        console.log(item);
 
-        if (itemVal == true){
-          console.log("true")
+        if (item.indexOf('item') > -1){
+          var database = firebase.database().ref('items/' + item);
+          database.on('value', function(snapshot){
+            snapshot.forEach(function(item){ 
+              var itemVal = item.val();
+              console.log(itemVal);
+              $('#basketTable tr:last').after('<td>', itemVal, '</td>');
+              
+            })
+
+          })
+
         }
 
       })

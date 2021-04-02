@@ -12,14 +12,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function addItem(){
+
   var item = document.getElementById('item').value;
   var description = document.getElementById('description').value;
   var price = document.getElementById('price').value;
   //var picture = document.getElementById('password').value;
-  firebase.database().ref('items/').push({
+  firebase.database().ref('items/item1').update({
     item: item,
     description: description,
     price: price
   });
-  Console.log("uploaded")
+
 }
