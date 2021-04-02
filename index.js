@@ -255,22 +255,20 @@ function populateBasketBox(){
         var string = JSON.stringify(itemVal);
         var item = string.slice(25, -2); 
         
-        console.log(item);
-
         if (item.indexOf('item') > -1){
           var database = firebase.database().ref('items/' + item);
           database.on('value', function(snapshot){
             snapshot.forEach(function(item){ 
               var itemVal = item.val();
               console.log(itemVal);
-              $('#basketTable tr:last').after('<td>', itemVal, '</td>');
-              
+
+              $('#basketTable').append('<th>'); 
+              $('#basketTable > tbody:last').append('<td>' + itemVal + '</td>'); 
+              $('#basketTable').append('</th>'); 
+
             })
-
           })
-
         }
-
       })
     });
   })
