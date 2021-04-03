@@ -168,6 +168,14 @@ body {
   margin: 20px;
 }
 
+.remove{
+  color: red;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
 .footer {
   left: 0;
   bottom: 0;

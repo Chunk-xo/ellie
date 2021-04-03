@@ -278,10 +278,18 @@ function populateBasketBox(){
             console.log(qauntity);
 
             // $('#basketTable').append('<th>'); 
-            $('#basketTable > tbody:last').append('<tr><td>' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td id="' + item +'remove">X</td></tr>'); 
+            $('#basketTable > tbody:last').append('<tr><td id="rowID">' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td class="remove" id="' + item +'remove">X</td></tr>'); 
             //$('#basketTable > tbody:last').append('<td>' + price + '</td>'); 
             //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
             //$('#basketTable').append('</th>'); 
+
+            $(".remove").on("click", function(){
+              var row = $(this).parent().parent("tr");
+              var IDSelected = $(row).find('#' + item + 'remove').html();
+              $(this).parent().parent("tr").remove();
+              firebase.database().ref('user/' + userIdenity + '/' + IDSelected).set(null)
+              console.log("click");			
+            })
 
             })
 
@@ -295,5 +303,5 @@ function populateBasketBox(){
 populateBasketBox();
 
 function removeItemFromBasket(){
-  
+			
 }
