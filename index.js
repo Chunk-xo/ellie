@@ -65,6 +65,7 @@ function addToBasket(item){
           item: item.id,
           inbasket: true,
         });
+        populateBasketBox();
       }
       
       else {
@@ -86,6 +87,7 @@ function addToBasket(item){
       
       if (itemCheck == item.id){
         //Item Already in Basket Do Nothing
+        populateBasketBox();
       }
 
       else {
@@ -94,7 +96,7 @@ function addToBasket(item){
           item: item.id,
           inbasket: true,
         });
-
+        populateBasketBox();
       }
 
     });
@@ -103,6 +105,7 @@ function addToBasket(item){
       //Do nothing
       
     }
+
   });
 }
 
@@ -244,11 +247,12 @@ function showBasketBox(){
 }
 
 function populateBasketBox(){
-	
+  $('#tbody').empty();
   firebase.auth().onAuthStateChanged((user) => {
     var userIdenity = user.uid;   
     var database = firebase.database().ref('user/' + userIdenity);
-    database.on('value', function(snapshot){
+   
+    database.once('value', function(snapshot){
       snapshot.forEach(function(item){        
         var itemVal = item.val();
         var string = JSON.stringify(itemVal);
@@ -261,10 +265,9 @@ function populateBasketBox(){
             snapshot.forEach(function(item){ 
               var itemVal = item.val();
             })
-
+            
             firebase.database().ref('items/' + item).on('value', function (snapshot) {
             var data = snapshot.val();
-      
             var value = Object.values(data);
             var name = value[0];
             var price = value[1];
