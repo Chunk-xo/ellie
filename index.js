@@ -244,11 +244,10 @@ function showBasketBox(){
 }
 
 function populateBasketBox(){
-
+	
   firebase.auth().onAuthStateChanged((user) => {
     var userIdenity = user.uid;   
     var database = firebase.database().ref('user/' + userIdenity);
-   
     database.on('value', function(snapshot){
       snapshot.forEach(function(item){        
         var itemVal = item.val();
@@ -256,17 +255,33 @@ function populateBasketBox(){
         var item = string.slice(25, -2); 
         
         if (item.indexOf('item') > -1){
+          
           var database = firebase.database().ref('items/' + item);
           database.on('value', function(snapshot){
             snapshot.forEach(function(item){ 
               var itemVal = item.val();
-              console.log(itemVal);
+            })
 
-              $('#basketTable').append('<th>'); 
-              $('#basketTable > tbody:last').append('<td>' + itemVal + '</td>'); 
-              $('#basketTable').append('</th>'); 
+            firebase.database().ref('items/' + item).on('value', function (snapshot) {
+            var data = snapshot.val();
+      
+            var value = Object.values(data);
+            var name = value[0];
+            var price = value[1];
+            var qauntity = value[2];
+            console.log(item);
+            console.log(name);
+            console.log(price);
+            console.log(qauntity);
+
+            // $('#basketTable').append('<th>'); 
+            $('#basketTable > tbody:last').append('<tr><td>' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td id="' + item +'remove">X</td></tr>'); 
+            //$('#basketTable > tbody:last').append('<td>' + price + '</td>'); 
+            //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
+            //$('#basketTable').append('</th>'); 
 
             })
+
           })
         }
       })
@@ -275,3 +290,7 @@ function populateBasketBox(){
 } 
 
 populateBasketBox();
+
+function removeItemFromBasket(){
+  
+}
