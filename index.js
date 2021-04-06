@@ -265,7 +265,8 @@ function populateBasketBox(){
             snapshot.forEach(function(item){ 
               var itemVal = item.val();
             })
-            
+
+
             firebase.database().ref('items/' + item).on('value', function (snapshot) {
             var data = snapshot.val();
             var value = Object.values(data);
@@ -278,21 +279,13 @@ function populateBasketBox(){
             console.log(qauntity);
 
             // $('#basketTable').append('<th>'); 
-            $('#basketTable > tbody:last').append('<tr><td id="rowID">' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td class="remove" id="' + item +'remove">X</td></tr>'); 
+            $('#basketTable > tbody:last').append('<tr id="#' + item + '"><td id="rowID" class="trID">' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td class="remove" id="#' + item + 'remove" onclick="removeItemFromBasket('+ item +');">X</td></tr>'); 
             //$('#basketTable > tbody:last').append('<td>' + price + '</td>'); 
             //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
             //$('#basketTable').append('</th>'); 
 
-            $(".remove").on("click", function(){
-              var row = $(this).parent().parent("tr");
-              var IDSelected = $(row).find('#' + item + 'remove').html();
-              $(this).parent().parent("tr").remove();
-              firebase.database().ref('user/' + userIdenity + '/' + IDSelected).set(null)
-              console.log("click");			
+            checkIfEmpty(item);
             })
-
-            })
-
           })
         }
       })
@@ -302,6 +295,28 @@ function populateBasketBox(){
 
 populateBasketBox();
 
-function removeItemFromBasket(){
-			
+
+
+function removeItemFromBasket(itemRemove){
+  firebase.auth().onAuthStateChanged((user) => {
+    var userIdenity = user.uid;
+    var item = itemRemove.id;
+    firebase.database().ref('user/' + userIdenity + '/' + item).set(null)	
+  })
+  populateBasketBox();
 }
+
+function checkIfEmpty(item){
+  var status = $('rowID').hasClass('trID')// Returns true if the class exist.
+  console.log(status);
+  var items = item;
+  if(document.getElementById(items) !== null)
+  {
+    //not null
+    console.log("Stuff in Basket");
+  }
+  else{
+    console.log("Empty Basket")
+  }
+}
+
