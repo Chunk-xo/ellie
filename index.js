@@ -297,20 +297,20 @@ populateBasketBox();
 
 
 
-function removeItemFromBasket(itemRemove){
+function removeItemFromBasket(item){
   firebase.auth().onAuthStateChanged((user) => {
     var userIdenity = user.uid;
-    var item = itemRemove.id;
-    firebase.database().ref('user/' + userIdenity + '/' + item).set(null)	
+    var items = item.id;
+    firebase.database().ref('user/' + userIdenity + '/' + items).set(null)	
+    populateBasketBox();
+    checkIfEmpty(item);
   })
-  populateBasketBox();
 }
 
 function checkIfEmpty(item){
   var status = $('rowID').hasClass('trID')// Returns true if the class exist.
   console.log(status);
-  var items = item;
-  if(document.getElementById(items) !== null)
+  if(document.getElementById(item) !== null)
   {
     //not null
     console.log("Stuff in Basket");
@@ -319,4 +319,3 @@ function checkIfEmpty(item){
     console.log("Empty Basket")
   }
 }
-
