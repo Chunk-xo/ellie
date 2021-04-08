@@ -237,13 +237,28 @@ function showBasketBox(){
   $("#basketOverlay").fadeTo(200, 1);
   $("#basketPopUp").fadeTo(200, 1);
   $("#closeBasketBox").click(function() {
-    $(".fullscreen-container").fadeOut(200);
+  $(".fullscreen-container").fadeOut(200);
   });
 
   //$(".fullscreen-container").click(function() {
     //$(".fullscreen-container").fadeOut(200);
   //});
 
+}
+
+function checkIfEmpty(item){
+  var status = $('rowID').hasClass('trID')// Returns true if the class exist.
+  console.log(status);
+  if(document.getElementById(item) !== null)
+  {
+    //not null
+    console.log("Stuff in Basket");
+    $("#basketStatusMessage").fadeOut(200);
+  }
+  else{
+    console.log("Empty Basket");
+    $("#basketStatusMessage").fadeIn(200);
+  }
 }
 
 function populateBasketBox(){
@@ -271,12 +286,14 @@ function populateBasketBox(){
             var data = snapshot.val();
             var value = Object.values(data);
             var name = value[0];
-            var price = value[1];
-            var qauntity = value[2];
-            console.log(item);
-            console.log(name);
-            console.log(price);
-            console.log(qauntity);
+            var postage = value[1];
+            var price = value[2];
+            var qauntity = value[3];
+            //console.log(item);
+            //console.log(name);
+            //console.log(price);
+            //console.log(postage);
+            //console.log(qauntity);
 
             // $('#basketTable').append('<th>'); 
             $('#basketTable > tbody:last').append('<tr id="#' + item + '"><td id="rowID" class="trID">' + qauntity + '</td><td>' + name +'</td><td>' + price +'</td><td class="remove" id="#' + item + 'remove" onclick="removeItemFromBasket('+ item +');">X</td></tr>'); 
@@ -284,10 +301,20 @@ function populateBasketBox(){
             //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
             //$('#basketTable').append('</th>'); 
 
+            var currentTotal = document.getElementById("#totalPrice").getAttribute('value')
+            var newTotal = currentTotal + price;
+            console.log(currentTotal);
+            //console.log("Total Price:" + newTotal);
+
             checkIfEmpty(item);
             })
           })
         }
+
+        else {
+            checkIfEmpty(item);
+          }
+
       })
     });
   })
@@ -307,15 +334,3 @@ function removeItemFromBasket(item){
   })
 }
 
-function checkIfEmpty(item){
-  var status = $('rowID').hasClass('trID')// Returns true if the class exist.
-  console.log(status);
-  if(document.getElementById(item) !== null)
-  {
-    //not null
-    console.log("Stuff in Basket");
-  }
-  else{
-    console.log("Empty Basket")
-  }
-}
