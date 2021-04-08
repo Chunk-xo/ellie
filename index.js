@@ -301,18 +301,24 @@ function populateBasketBox(){
             //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
             //$('#basketTable').append('</th>'); 
 
-            var currentTotal = document.getElementById("#totalPrice").getAttribute('value')
-            var newTotal = currentTotal + price;
-            console.log(currentTotal);
-            //console.log("Total Price:" + newTotal);
+            var getCurrent = $('#totalCost').text()
+            var trimmed = getCurrent.slice(7); 
+            let stringToNum = parseFloat(trimmed);
+            //console.log(stringToNum);
+            var newTotal = getCurrent + price;
+            console.log(newTotal);
+            
 
             checkIfEmpty(item);
+
             })
           })
         }
 
         else {
+
             checkIfEmpty(item);
+          
           }
 
       })
