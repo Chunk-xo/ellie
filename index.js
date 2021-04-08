@@ -301,14 +301,28 @@ function populateBasketBox(){
             //$('#basketTable > tbody:last').append('<td>' + qauntity + '</td>');
             //$('#basketTable').append('</th>'); 
 
+            firebase.database().ref('user/' + userIdenity + '/basket/').once('value', function (snapshot) {
+            var basket = snapshot.val();
+            });
+
+            
+            
+            //console.log("Basket" + basket);
+      
+            var numOfItems = $("#numberOfItems").text()
+            var trimmedItems = numOfItems.slice(7);
+            var itemToNum = parseFloat(trimmedItems);
+            var newTotalItem = postage * itemToNum;
+            console.log(newTotalItem);
+
             var getCurrent = $('#totalCost').text()
-            var trimmed = getCurrent.slice(7); 
+            var trimmed = getCurrent.slice(8); 
             let stringToNum = parseFloat(trimmed);
             //console.log(stringToNum);
-            var newTotal = getCurrent + price;
+            var newTotal = stringToNum + price;
             console.log(newTotal);
+            $("#value").text(newTotal);
             
-
             checkIfEmpty(item);
 
             })
