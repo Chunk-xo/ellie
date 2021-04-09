@@ -16,3 +16,10 @@ anime.timeline({loop: false})
     easing: "easeOutExpo",
     delay: 1000
   });
+
+  setInterval(function(){
+
+    $('#welcome').css({"display":"none"});
+    
+    },3000);
+  
