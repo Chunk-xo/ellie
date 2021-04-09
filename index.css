@@ -43,6 +43,11 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   cursor: pointer;
+  text-align: center;
+}
+
+.card img{
+  height:540px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -71,9 +76,14 @@ body {
   margin-top: 20px;
 }
 
-.socialbuttons {
+.socialbuttons{
+  padding-bottom: 40px;
+}
+
+.socialbuttons img {
   cursor: pointer;
   padding-left: 20px;
+  height:40px;
 }
 
 
