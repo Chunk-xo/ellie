@@ -225,7 +225,7 @@ function showLoginBox(){
   $("#accountOverlay").fadeTo(200, 1);
   $("#accountPopUp").fadeTo(200, 1);
   $("#closeAccountBox").click(function() {
-    $(".fullscreen-container").fadeOut(200);
+  $(".fullscreen-container").fadeOut(200);
   });
 
   //$(".fullscreen-container").click(function() {
@@ -342,8 +342,6 @@ function populateBasketBox(){
 
 populateBasketBox();
 
-
-
 function removeItemFromBasket(item){
   firebase.auth().onAuthStateChanged((user) => {
     var userIdenity = user.uid;
@@ -354,3 +352,12 @@ function removeItemFromBasket(item){
   })
 }
 
+function aboutPage(){
+  $("#homePage").fadeOut(200);
+  $("#aboutPage").fadeIn(200);
+};
+
+function homePage(){
+  $("#aboutPage").fadeOut(200);
+  $("#homePage").fadeIn(200);
+}

@@ -17,272 +17,278 @@
 
 <body>
 
-  <!--whole body welcome-->
-  <div id="welcome">
-    <h1 class="ml6">
-      <div class="horizonal">
-        <span class="text-wrapper">
-          <span class="letters">Handmade Pottery by Elena Dimitrova</span>
-        </span>
-      </div>
-    </h1>
-  </div>
-
-  <nav style="margin-bottom:20px;">
-    <div class="nav-wrapper" style="background-color:#FD8F94">
-      <a href="" class="brand-logo left"></a>
-      <ul id="nav-mobile" class="right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li style="text-align:center;"><a href="#" onclick="showBasketBox();">Basket</a>
-          <div class="basketCircle">
-            <p id="basketCounter">1</p>
-          </div>
-        </li>
-        <li id="signoutNav"><a href="#" onclick="signout();">Sign Out</a></li>
-        <li id="accountNav"><a href="#" onclick="showLoginBox();">Login/Register</a></li>
-      </ul>
+    <!--whole body welcome-->
+    <div id="welcome">
+      <h1 class="ml6">
+        <div class="horizonal">
+          <span class="text-wrapper">
+            <span class="letters">Handmade Pottery by Elena Dimitrova</span>
+          </span>
+        </div>
+      </h1>
     </div>
-  </nav>
 
-  <div class="container">
-    <!--Moving boxes-->
-    <div class="row">
-      <div class="col s12">
-        <div class="area">
-          <ul class="circles" style="z-index:-1;">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+    <nav style="margin-bottom:20px;">
+      <div class="nav-wrapper" style="background-color:#FD8F94">
+        <a href="" class="brand-logo left"></a>
+        <ul id="nav-mobile" class="right">
+          <li class="active"><a href="#" onclick="homePage();">Home</a></li>
+          <li><a href="#" onclick="aboutPage();">About</a></li>
+          <li style="text-align:center;"><a href="#" onclick="showBasketBox();">Basket</a>
+            <div class="basketCircle">
+              <p id="basketCounter">1</p>
+            </div>
+          </li>
+          <li id="signoutNav"><a href="#" onclick="signout();">Sign Out</a></li>
+          <li id="accountNav"><a href="#" onclick="showLoginBox();">Login/Register</a></li>
+        </ul>
+      </div>
+    </nav>
 
-          <!--Logo-->
-          <div class="title" style="z-index:9999;">
-            <!--<img src="https://raw.githubusercontent.com/Chunk-xo/ellie/master/ellielogo.png" style="width=250px; height:250px; padding-top:30px;"></img>-->
-            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/zayoLogo-removebg-preview.png?alt=media&token=9a833a1f-94f6-498d-ba73-688e4d12d7fb"></img>
+  <section id="homePage">
+
+    <div class="container">
+      <!--Moving boxes-->
+      <div class="row">
+        <div class="col s12">
+          <div class="area">
+            <ul class="circles" style="z-index: 1;">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+
+            <!--Logo-->
+            <div class="title">
+              <!--<img src="https://raw.githubusercontent.com/Chunk-xo/ellie/master/ellielogo.png" style="width=250px; height:250px; padding-top:30px;"></img>-->
+              <img style="z-index:9999;" src="https://github.com/Chunk-xo/ellie/blob/master/zayoLogo-removebg-preview.png?raw=true"></img>
+            </div>
+
           </div>
-
         </div>
       </div>
-    </div>
-    <br>
-    <br>
+      <br>
+      <br>
 
-    <!--Social Media Buttons-->
-    <div class="w3-row">
-      <div class="w3-col" style="">
-        <div class="socialbuttons">
-         <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/instagram.png?alt=media&token=9bd91f97-c7d8-44f4-8e66-68eb87e3028e"></img>
-         <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/facebook.png?alt=media&token=7bca89f0-2979-4131-9798-ba05bff3b575"></img>
-         <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/tik-tok.png?alt=media&token=c42cd049-406a-4c9e-9d33-25e03968cb01"></img>
+      <!--Social Media Buttons-->
+      <div class="w3-row">
+        <div class="w3-col" style="">
+          <div class="socialbuttons">
+          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/instagram.png?alt=media&token=9bd91f97-c7d8-44f4-8e66-68eb87e3028e"></img>
+          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/facebook.png?alt=media&token=7bca89f0-2979-4131-9798-ba05bff3b575"></img>
+          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/tik-tok.png?alt=media&token=c42cd049-406a-4c9e-9d33-25e03968cb01"></img>
+        </div>
       </div>
+      
+      <!--<div id="hello" style="float:right; margin-right:20%; display=inline-block;"></div>-->
+
+      <!--Items-->
+      <div class="w3-row-padding">
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug1.jpeg?alt=media&token=7e56a752-7773-4896-aafb-f88ac48d3e04">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item1);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug2.jpeg?alt=media&token=ef60f576-d6e4-457a-9bd6-35fa0414f19d">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item2);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug3.jpeg?alt=media&token=8e3a0b7b-21aa-4f91-bf26-23f292c7584d">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item3);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug4.jpeg?alt=media&token=5044bd12-7525-4783-b130-235fdfcff38a">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item4);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug5.jpeg?alt=media&token=ca444e39-bad2-422c-93ac-ea196a637710">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item5);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-third">
+          <div class="card">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug6.jpeg?alt=media&token=49a7a686-682f-4277-b399-5ef510d059df">
+            <div class="cardContainer">
+              <p id="itemTitle">Red Mug</p>
+              <p id="description">A red drinking mug, perfect for tea</p>
+              <br>
+              <p id="price">£100</p>
+              <button id="item1" onclick="addToBasket(item6);">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+          
+      </div>
+    </div>        
+
+      <div class="row">
+        <div class="col s12">
+          <div class="subs">
+
+              <div class="input-field" style="display:inline-block; margin:20px; width:50%">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">New Product Email Alerts</label>
+              </div>
+
+              <a class="waves-effect waves-light btn" style="margin:20px; margin-bottom:40px; color:grey; background-color:#ffbdeb;" >Subscribe</a>
+
+          </div>
+        </div>
+      </div>
+  
+    </div>
     </div>
     
-    <!--<div id="hello" style="float:right; margin-right:20%; display=inline-block;"></div>-->
+    <!--Sign in/Register Overlay-->
+    <div id="accountOverlay" class="fullscreen-container">
+      <section id="accountbox">
+        <div id="accountPopUp" class="popUp">
+          <a class="closeBox" id="closeAccountBox" href="#">&times;</a>
+          <a id="signUpButton" class="popdivButton">Sign Up</a>
+          <a id="signInButton" class="popdivButton">Sign In</a>
 
-    <!--Items-->
-    <div class="w3-row-padding">
+          <div class="row">
+            <form class="col s12">
+              
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
 
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug1.jpeg?alt=media&token=7e56a752-7773-4896-aafb-f88ac48d3e04">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
-            <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item1);">Add to Basket</button>
-          </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <button onclick="createNewAccount()">Create</button>
+                  <button onclick="loginAccount()">Login</button>
+                </div>
+              </div>
+          </form>
         </div>
-      </div>
-
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug2.jpeg?alt=media&token=ef60f576-d6e4-457a-9bd6-35fa0414f19d">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
-            <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item2);">Add to Basket</button>
-          </div>
         </div>
-      </div>
-
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug3.jpeg?alt=media&token=8e3a0b7b-21aa-4f91-bf26-23f292c7584d">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
-            <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item3);">Add to Basket</button>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
 
-    <div class="w3-row-padding">
+   <!--Basket Overlay-->
+    <div id="basketOverlay" class="fullscreen-container">
+      <section id="basketbox">
+        <div id="basketPopUp" class="popUp">
+          <a class="closeBox" id="closeBasketBox" href="#">&times;</a>
 
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug4.jpeg?alt=media&token=5044bd12-7525-4783-b130-235fdfcff38a">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
+          <div class="row">
+            <table id="basketTable" class="w3-table w3-striped">
+              <tr>
+                <th>Qauntity</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Remove</th>
+              </tr>
+              <tbody id="tbody">
+
+              </tbody>
+            </table>
+          </div>
+          <div id="basketStatusMessage">
             <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item4);">Add to Basket</button>
+            <br>
+            <p>Your Basket Is Empty</p>
+            <br>
+            <br>
+          </div>
+          <div class="costs">
+            <p id="numberOfItems">Items: 0</p>
+            <p>Postage (UK Only): 0</p>
+            <p id="totalCost">Total: <b>£</b><b id="value">0</b></p>
+          </div>
+
+          <a id="proceedToPayment" class="popdivButton">Proceed to Payment</a>
+          <br>
+          <div class="paymentMethods">
+            <p>Bitcoin</p>
+            <p>PayPal</p>
+            <p>Debit/Credit</p>
           </div>
         </div>
-      </div>
-
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug5.jpeg?alt=media&token=ca444e39-bad2-422c-93ac-ea196a637710">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
-            <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item5);">Add to Basket</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="w3-third">
-        <div class="card">
-          <img src="https://firebasestorage.googleapis.com/v0/b/zayo-ellie.appspot.com/o/mug6.jpeg?alt=media&token=49a7a686-682f-4277-b399-5ef510d059df">
-          <div class="cardContainer">
-            <p id="itemTitle">Red Mug</p>
-            <p id="description">A red drinking mug, perfect for tea</p>
-            <br>
-            <p id="price">£100</p>
-            <button id="item1" onclick="addToBasket(item6);">Add to Basket</button>
-          </div>
-        </div>
-      </div>
-        
+      </section>
     </div>
-  </div>        
 
-    <div class="row">
-      <div class="col s12">
-        <div class="subs">
-
-            <div class="input-field" style="display:inline-block; margin:20px; width:50%">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">New Product Email Alerts</label>
-            </div>
-
-            <a class="waves-effect waves-light btn" style="margin:20px; margin-bottom:40px; color:grey; background-color:#ffbdeb;" >Subscribe</a>
-
-        </div>
-      </div>
-    </div>
- 
-  </div>
-  </div>
-  
-  <!--Sign in/Register Overlay-->
-  <div id="accountOverlay" class="fullscreen-container">
-    <section id="accountbox">
-      <div id="accountPopUp" class="popUp">
-        <a class="closeBox" id="closeAccountBox" href="#">&times;</a>
-        <a id="signUpButton" class="popdivButton">Sign Up</a>
-        <a id="signInButton" class="popdivButton">Sign In</a>
-
-        <div class="row">
-          <form class="col s12">
-            
-            <div class="row">
-              <div class="input-field col s6">
-                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s12">
-                <button onclick="createNewAccount()">Create</button>
-                <button onclick="loginAccount()">Login</button>
-              </div>
-            </div>
-        </form>
-      </div>
-      </div>
-    </section>
-  </div>
-
- <!--Basket Overlay-->
-  <div id="basketOverlay" class="fullscreen-container">
-    <section id="basketbox">
-      <div id="basketPopUp" class="popUp">
-        <a class="closeBox" id="closeBasketBox" href="#">&times;</a>
-
-        <div class="row">
-          <table id="basketTable" class="w3-table w3-striped">
-            <tr>
-              <th>Qauntity</th>
-              <th>Item</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-            <tbody id="tbody">
-
-            </tbody>
-          </table>
-        </div>
-        <div id="basketStatusMessage">
-          <br>
-          <br>
-          <p>Your Basket Is Empty</p>
-          <br>
-          <br>
-        </div>
-        <div class="costs">
-          <p id="numberOfItems">Items: 0</p>
-          <p>Postage (UK Only): 0</p>
-          <p id="totalCost">Total: <b>£</b><b id="value">0</b></p>
-        </div>
-
-        <a id="proceedToPayment" class="popdivButton">Proceed to Payment</a>
-        <br>
-        <div class="paymentMethods">
-          <p>Bitcoin</p>
-          <p>PayPal</p>
-          <p>Debit/Credit</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
+  </section>
+  <section id="aboutPage">
+    <p>about Page</p>
+  </section>
 
   <div class="footer">
     
