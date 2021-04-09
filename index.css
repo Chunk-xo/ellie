@@ -61,12 +61,37 @@ body {
   text-align: center;
 }
 
+#itemTitle{
+  font-weight: bold;
+  font-size: 1.6em;
+  padding: 10px;
+}
+
+#description{
+  font-size: 1.1em;
+}
+
+#price{
+  font-size: 1.1em;
+}
+
 .cardContainer h1{
-  font-size: 1.4em;
+  font-size: 1.8em;
 }
 
 .cardContainer a {
   margin: 20px;
+}
+
+.cardContainer button{
+  background-color: rgb(110,238,233);
+  color: white;
+  width: 200px;
+  margin: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.2em;
 }
 
 .subs {
