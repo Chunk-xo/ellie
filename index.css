@@ -47,7 +47,8 @@ body {
 }
 
 .card img{
-  height:540px;
+  height: auto;
+  width: 100%;
 }
 
 /* On mouse-over, add a deeper shadow */
