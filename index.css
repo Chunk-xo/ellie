@@ -214,6 +214,10 @@ font-size: 1.1em;
   
 }
 
+#aboutPage{
+  display:none;
+}
+
 
 .footer {
   left: 0;
