@@ -115,12 +115,7 @@ font-size: 1.1em;
   font-size: 1.2em;
 }
 
-.subs {
-  text-align: center;
-  width: 100%;
-  padding: 20px;
-  margin-top: 20px;
-}
+
 
 .socialbuttons{
   padding-bottom: 40px;
@@ -238,16 +233,39 @@ font-size: 1.1em;
   display:none;
 }
 
+.subs {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#emailSub{
+  display:inline-block; 
+  width:60%;
+}
+
+.subButton{
+  background-color: #fface3;
+  color: white;
+  width: 200px;
+  margin: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.2em;
+}
 
 .footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 200px;
   background-color: #636363;
   color: white;
   text-align: center;
   margin-top: 20px;
+  padding-top: 40px;
 }
 
 .footer a{
